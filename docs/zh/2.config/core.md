@@ -80,13 +80,13 @@ export const siteConfig: SiteConfig = {
         mode: "banner",
         // 图片源配置 (fullscreen 和 banner 模式共享)
         src: {
-            // 桌面壁纸图片 (支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
+            // 桌面壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             desktop: [
-                "/assets/desktop-banner/desktopBanner_1.webp",
+                "/assets/images/desktopWallpaper_1.webp",
             ],
-            // 移动壁纸图片 (支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
+            // 移动壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             mobile: [
-                "/assets/mobile-banner/mobileBanner_1.webp",
+                "/assets/images/mobileWallpaper_1.webp",
             ],
         },
         // 壁纸位置 ('top' | 'center' | 'bottom')
@@ -191,10 +191,6 @@ export const siteConfig: SiteConfig = {
     - `defaultTheme`: 黑白主题，有 `system` 跟随系统、`light` 浅色、`dark` 深色三个选项
 - 壁纸设置
     - `mode`: 壁纸默认模式，支持 fullscreen（全屏壁纸）、banner（横幅壁纸）、none（纯色背景）三种模式
-    - **图片路径**：相对于 `/src` 目录，如果以 `/` 开头则相对于 `/public` 目录
-    - **轮播功能**：当图片数组长度大于1时自动启用轮播
-    - **响应式设计**：桌面端和移动端可使用不同的图片
-    - **打字机效果**：副标题支持动态打字机效果，可配置速度和暂停时间
 
 
 ## 导航栏二级折叠菜单配置
@@ -236,11 +232,11 @@ export const navBarConfig: NavBarConfig = {
 };
 ```
 
-- `links`**: 一个数组，定义了导航栏中的各个链接。每个链接对象可以是一个预设链接 (`LinkPreset`)，也可以是一个自定义链接对象
-    - **`name`**:  菜单项显示的名称
-    - **`url`**:  菜单项点击后跳转的 URL
-    - **`children`**:  一个数组，定义了当前菜单项的子菜单。子菜单项的结构与顶级菜单项类似，可以继续嵌套
-    - **`external`**: 如果设置为 `true`，表示这是一个外部链接，会在新标签页中打开
+- `links`: 一个数组，定义了导航栏中的各个链接。每个链接对象可以是一个预设链接 (`LinkPreset`)，也可以是一个自定义链接对象
+    - `name`:  菜单项显示的名称
+    - `url`:  菜单项点击后跳转的 URL
+    - `children`:  一个数组，定义了当前菜单项的子菜单。子菜单项的结构与顶级菜单项类似，可以继续嵌套
+    - `external`: 如果设置为 `true`，表示这是一个外部链接，会在新标签页中打开
 
 
 ## 侧边栏布局配置
@@ -351,18 +347,18 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 ```
 
-- **`components`**:   一个数组，定义了侧边栏中包含的各个组件及其配置
-        - **`type`**:  组件类型，例如：`"profile"`（用户资料）、`"announcement"`（公告）、`"categories"`（分类）、`"tags"`（标签）。
-        - **`enable`**:  是否启用该组件。设置为 `true` 启用，`false` 禁用。
-        - **`side`**: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
-        - **`order`**:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
-        - **`position`**:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
-        - **`responsive`**:  针对特定组件的响应式配置。例如，`categories` 和 `tags` 组件可以配置 `collapseThreshold`：
-            - **`collapseThreshold`**:  折叠阈值。当组件内的项目数量超过此值时，组件内容将自动折叠。
-- **`defaultAnimation`**: 默认动画配置
-    - **`enable`**: 是否启用侧边栏组件的默认动画效果。
-    - **`baseDelay`**:  动画的基础延迟时间（毫秒）。
-    - **`increment`**:  每个组件依次增加的动画延迟时间（毫秒）。例如，第一个组件延迟 `baseDelay`，第二个组件延迟 `baseDelay + increment`，以此类推。
+- `components`:   一个数组，定义了侧边栏中包含的各个组件及其配置
+        - `type`:  组件类型，例如：`"profile"`（用户资料）、`"announcement"`（公告）、`"categories"`（分类）、`"tags"`（标签）。
+        - `enable`:  是否启用该组件。设置为 `true` 启用，`false` 禁用。
+        - `side`: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
+        - `order`:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
+        - `position`:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
+        - `responsive`:  针对特定组件的响应式配置。例如，`categories` 和 `tags` 组件可以配置 `collapseThreshold`：
+            - `collapseThreshold`:  折叠阈值。当组件内的项目数量超过此值时，组件内容将自动折叠。
+- `defaultAnimation`: 默认动画配置
+    - `enable`: 是否启用侧边栏组件的默认动画效果。
+    - `baseDelay`:  动画的基础延迟时间（毫秒）。
+    - `increment`:  每个组件依次增加的动画延迟时间（毫秒）。例如，第一个组件延迟 `baseDelay`，第二个组件延迟 `baseDelay + increment`，以此类推。
 
 
 ## 公告功能配置说明

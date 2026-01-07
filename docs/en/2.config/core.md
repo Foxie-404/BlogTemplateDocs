@@ -80,13 +80,13 @@ export const siteConfig: SiteConfig = {
         mode: "banner",
         // Image source configuration (shared by fullscreen and banner modes)
         src: {
-            // Desktop wallpaper images (supports a single image or an array; when the array length > 1, carousel is enabled automatically)
+            // Desktop wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
             desktop: [
-                "/assets/desktop-banner/desktopBanner_1.webp",
+                "/assets/images/desktopWallpaper_1.webp",
             ],
-            // Mobile wallpaper images (supports a single image or an array; when the array length > 1, carousel is enabled automatically)
+            // Mobile wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
             mobile: [
-                "/assets/mobile-banner/mobileBanner_1.webp",
+                "/assets/images/mobileWallpaper_1.webp",
             ],
         },
         // Wallpaper position ('top' | 'center' | 'bottom')
@@ -172,30 +172,6 @@ export const siteConfig: SiteConfig = {
             // Icon size
             sizes: "32x32",
         },
-        {
-            // Icon file path
-            src: "/favicon/favicon-light-128.png",
-            // Theme ("light" | "dark")
-            theme: "light",
-            // Icon size
-            sizes: "128x128",
-        },
-        {
-            // Icon file path
-            src: "/favicon/favicon-dark-32.png",
-            // Theme ("light" | "dark")
-            theme: "dark",
-            // Icon size
-            sizes: "32x32",
-        },
-        {
-            // Icon file path
-            src: "/favicon/favicon-dark-128.png",
-            // Theme ("light" | "dark")
-            theme: "dark",
-            // Icon size
-            sizes: "128x128",
-        },
     ],
     // bangumi configuration
     bangumi: {
@@ -215,10 +191,6 @@ export const siteConfig: SiteConfig = {
     - `defaultTheme`: Light/Dark theme options: `system` (follow system), `light` (light), `dark` (dark)
 - **Wallpaper settings**
     - `mode`: Default wallpaper mode. Supports three modes: `fullscreen` (full-screen wallpaper), `banner` (banner wallpaper), and `none` (solid background)
-    - **Image paths**: Paths are relative to the `/src` directory. If starting with `/`, paths are relative to the `/public` directory
-    - **Carousel**: When the image array length is greater than 1, carousel is enabled automatically
-    - **Responsive design**: Desktop and mobile can use different images
-    - **Typewriter effect**: Subtitle supports a dynamic typewriter effect with configurable speed and pause time
 
 
 ## Navbar Second-level Dropdown Menu Configuration
@@ -260,11 +232,11 @@ export const navBarConfig: NavBarConfig = {
 };
 ```
 
-- **`links`**: An array that defines the links in the navbar. Each link item can be a preset link (`LinkPreset`) or a custom link object
-    - **`name`**:  Displayed name of the menu item
-    - **`url`**:  URL to navigate to when the menu item is clicked
-    - **`children`**:  An array defining the submenu items of the current menu item. Submenu items have a similar structure to top-level items and can be nested further
-    - **`external`**: When set to `true`, this marks the link as external and opens it in a new tab
+- `links`: An array that defines the links in the navbar. Each link item can be a preset link (`LinkPreset`) or a custom link object
+    - `name`:  Displayed name of the menu item
+    - `url`:  URL to navigate to when the menu item is clicked
+    - `children`:  An array defining the submenu items of the current menu item. Submenu items have a similar structure to top-level items and can be nested further
+    - `external`: When set to `true`, this marks the link as external and opens it in a new tab
 
 
 ## Sidebar Layout Configuration
@@ -325,28 +297,28 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 ```
 
-- **`enable`**:  Whether to enable the sidebar feature. `true` to enable, `false` to disable.
-- **`position`**: Sidebar position on the page. Options: `"left"` or `"right"`.
-- **`components`**:  Array defining sidebar components and their configuration
-        - **`type`**:  Component type, e.g. `"profile"` (user profile), `"announcement"` (announcement), `"categories"` (categories), `"tags"` (tags)
-        - **`enable`**:  Whether to enable this component. `true` to enable, `false` to disable.
-        - **`order`**:  Display order of the component. Smaller numbers appear earlier in the sidebar.
-        - **`position`**:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
-        - **`responsive`**:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
-            - **`collapseThreshold`**:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
-- **`defaultAnimation`**: Default animation configuration
-    - **`enable`**: Whether to enable default sidebar component animations.
-    - **`baseDelay`**:  Base animation delay time (ms).
-    - **`increment`**:  Incremental delay (ms) per component. For example, the first component delays by `baseDelay`, the second by `baseDelay + increment`, and so on.
-- **`responsive`**: Responsive layout configuration
-    - **`breakpoints`**: Screen width breakpoints (pixels) for different devices:
-        - **`mobile`**: Mobile breakpoint (e.g. `768`).
-        - **`tablet`**: Tablet breakpoint (e.g. `1024`).
-        - **`desktop`**: Desktop breakpoint (e.g. `1280`).
-    - **`layout`**: Sidebar layout mode under different breakpoints:
-        - **`mobile`**: Layout mode on mobile. Options: `"hidden"` (hide sidebar) or `"sidebar"` (show sidebar, usually as a drawer).
-        - **`tablet`**: Layout mode on tablet. Options: `"hidden"` or `"sidebar"`.
-        - **`desktop`**: Layout mode on desktop. Options: `"hidden"` or `"sidebar"`.
+- `enable`:  Whether to enable the sidebar feature. `true` to enable, `false` to disable.
+- `position`: Sidebar position on the page. Options: `"left"` or `"right"`.
+- `components`:  Array defining sidebar components and their configuration
+        - `type`:  Component type, e.g. `"profile"` (user profile), `"announcement"` (announcement), `"categories"` (categories), `"tags"` (tags)
+        - `enable`:  Whether to enable this component. `true` to enable, `false` to disable.
+        - `order`:  Display order of the component. Smaller numbers appear earlier in the sidebar.
+        - `position`:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
+        - `responsive`:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
+            - `collapseThreshold`:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
+- `defaultAnimation`: Default animation configuration
+    - `enable`: Whether to enable default sidebar component animations.
+    - `baseDelay`:  Base animation delay time (ms).
+    - `increment`:  Incremental delay (ms) per component. For example, the first component delays by `baseDelay`, the second by `baseDelay + increment`, and so on.
+- `responsive`: Responsive layout configuration
+    - `breakpoints`: Screen width breakpoints (pixels) for different devices:
+        - `mobile`: Mobile breakpoint (e.g. `768`).
+        - `tablet`: Tablet breakpoint (e.g. `1024`).
+        - `desktop`: Desktop breakpoint (e.g. `1280`).
+    - `layout`: Sidebar layout mode under different breakpoints:
+        - `mobile`: Layout mode on mobile. Options: `"hidden"` (hide sidebar) or `"sidebar"` (show sidebar, usually as a drawer).
+        - `tablet`: Layout mode on tablet. Options: `"hidden"` or `"sidebar"`.
+        - `desktop`: Layout mode on desktop. Options: `"hidden"` or `"sidebar"`.
 
 
 ## Announcement Feature Configuration
