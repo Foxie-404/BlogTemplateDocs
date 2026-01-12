@@ -54,16 +54,13 @@ export const siteConfig: SiteConfig = {
     timeZone: SITE_TIMEZONE,
     // Font configuration
     font: {
-        // zenMaruGothic font (suitable for Japanese and English, average for Chinese)
-        zenMaruGothic: {
-            // Use as global font
-            enable: true,
-        },
-        // Hanalei font (suitable for Chinese)
-        hanalei: {
-            // Use as global font
-            enable: false,
-        },
+        // Font configuration example
+        "Example - ZenMaruGothic": {
+            // Font source (font CSS link | font file path)
+            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap", // Use ZenMaruGothic CSS link
+            // Font name (font-family)
+            family: "Zen Maru Gothic",
+        }
     },
     // Theme color configuration
     themeColor: {
